@@ -1,0 +1,90 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-image: linear-gradient(to top, #88d3ce 0%, #6e45e2 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #b4b1b1;
+}
+
+h5 {
+    font-size: 0.875rem;
+}
+
+.btn-gradient-dark
+{
+    color: #fff !important;
+    background-image: linear-gradient(to right, #243949 0%, #517fa4 100%);
+    background-color: #517fa4;
+}
+
+.btn-rounded
+{
+    border-radius: 50px !important;
+}
+
+.forget-pass a{
+    color: rgb(70, 110, 241);
+    text-decoration: none;
+}
+
+.form-login {
+    width: 410px;
+    max-width: 410px;
+    padding: 35px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 10px 60px 0 rgba(29,29,31,.09);
+    width: 100%;
+    margin: auto;
+}
+
+.form-login .division {
+    float: none;
+    margin: 0 auto 18px;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    width: 100%;
+    color: #e95f2b;
+}
+
+.form-login .division .line {
+    border-top: 1px solid #e9ecef;
+    position: absolute;
+    top: 10px;
+    width: 34%;
+}
+
+.form-login .division .line.line-left {
+    left: 0;
+    border-top: 1px solid #07e0c4;
+}
+
+.form-login .division .line.line-right {
+    right: 0;
+    border-top: 1px solid #07e0c4;
+}
+
+.form-login .checkbox .custom-control label {
+    text-transform: initial;
+    font-size: 14px;
+    color: #e95f2b;
+}
+
+.login-text a { color: #6e45e2 }
+
+.theme-logo{
+    width: 100px;
+}
