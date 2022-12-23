@@ -13,8 +13,16 @@
 {{-- Jquery --}}
 <script src="{{ asset('public/assets/admin/js/jquery/jquery.min.js') }}"></script>
 
+{{-- common js --}}
+<script src="{{ asset('public/assets/admin/js/jquery/common.js') }}"></script>
+
 {{-- Sweet Alert --}}
 <script src="{{ asset('public/assets/vendor/js/sweet-alert.js') }}"></script>
+
+{{-- Toastr --}}
+<script src="{{ asset('public/assets/admin/js/toastr/toastr.min.js') }}"></script>
+
+
 
 {{-- Data Table --}}
 <script src="{{ asset('public/assets/vendor/simple-datatables/simple-datatables.js') }}"></script>

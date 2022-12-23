@@ -21,11 +21,16 @@
 {{-- custom css --}}
 <link href="{{ asset('public/assets/vendor/css/custom.css') }}" rel="stylesheet">
 
+{{-- sweet Alert --}}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+
 {{-- fontawesome icon --}}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"/>
 
 {{-- Jquey UI --}}
 <link rel="stylesheet" href="{{ asset('public/assets/vendor/css/jquery-ui.css') }}">
+
+
 
 <!-- =======================================================
 * Template Name: NiceAdmin - v2.3.1
