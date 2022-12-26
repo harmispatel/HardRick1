@@ -81,6 +81,9 @@ const { defaultsDeep } = require("lodash");
             $('#phone').removeClass('is-invalid');
             $('#price').removeClass('is-invalid');
             $('#days').removeClass('is-invalid');
+            $('#image').removeClass('is-invalid');
+            $('#Image').html('');
+            $('#Image').hide();
 
             toastr.clear();
             $(labelName).text(name); 
@@ -94,6 +97,8 @@ const { defaultsDeep } = require("lodash");
             $('#phone').removeClass('is-invalid');
             $('#price').removeClass('is-invalid');
             $('#days').removeClass('is-invalid');
+            $('#image').removeClass('is-invalid');
+
 
             toastr.clear();
             $.ajax({
@@ -108,16 +113,14 @@ const { defaultsDeep } = require("lodash");
                     if (response.success)
                     {
                         const datas = response.data;
-                    $default_image = "/public/image/default-image.jpeg";
-                    var images = (datas.image) ? datas.image : default_image;
-                    console.log(images);
                         $('#name').val(datas.name);
                         $('#name_ar').val(datas.name_ar);
                         $('#phone').val(datas.phone);
                         $('#price').val(datas.price);
                         $('#days').val(datas.days);
                         $('#id').val(datas.id);
-                        $('#Image').html('')
+                        $('#Image').html('');
+                        $('#Image').attr('src',datas.image);
                         $('#Image').show();
 
                     } else {
@@ -181,6 +184,17 @@ function loadData(type,tableIdName,url)
 
         ]
 
+    }else if(type==9)
+    {
+        var  columns = [
+            {data:'checkbox', name:'checkbox', "orderable":false,"bSortable": true},
+            {data: 'id', name: 'id'},
+            {data: 'specialist', name: 'specialist'},
+            {data: 'user', name: 'user'},
+            {data: 'description', name: 'description'},
+            {data: 'doctor', name: 'doctor'},
+
+        ]
     }
     var dataTable = $(tableIdName).DataTable();
     dataTable.destroy();
@@ -251,6 +265,7 @@ function loadData(type,tableIdName,url)
                     var phoneError = (validationError.phone) ? validationError.phone : '';
                     var priceError = (validationError.price) ? validationError.price : '';
                     var daysError = (validationError.days) ? validationError.days : '';
+                    var imageError = (validationError.image) ? validationError.image : '';
                     
 
                     // Name Error
@@ -282,21 +297,40 @@ function loadData(type,tableIdName,url)
                         $('#days').addClass('is-invalid');
                     }
 
+                    // Image Error
+                    if (imageError != '') {
+                        toastr.error(imageError);
+                        $('#image').addClass('is-invalid');
+                    }
+
                  }
             }
         });
 
        
-        // $('#masters').on('click', function(e) {
-        //     if($(this).is(':checked',true))  
-        //     {
-        //        $(".sub_chk").prop('checked', true);  
-        //     } else {  
-        //        $(".sub_chk").prop('checked',false);  
-        //     }  
-        //    });
 
-      
+       
          
         
 }
+
+function assign_doc(assigndoc,askdId)
+       {
+        $.ajaxSetup({   
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            type: "POST",
+            url: 'Askdoctor-change',
+            data: { assigndoc:assigndoc, askdId:askdId },
+            success: function(response)
+            {   
+                console.log(response); return false;
+                
+           }
+       });
+
+       }
+       

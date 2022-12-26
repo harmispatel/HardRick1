@@ -17,7 +17,7 @@ class HospitalController extends Controller
         return view('admin.Hospital.Hospital_list');
     }
 
-       // Load Foodallergy Data.
+       // Load Hospital Data.
        public function loadHospitalData(Request $request)
        {
            if ($request->ajax()) {
@@ -61,7 +61,7 @@ class HospitalController extends Controller
        }
 
 
-        // Show the form for editing the specified foodAllergy.
+        // Show the form for editing the specified Hospital.
      public function edit(Request $request)
      {
          $hospital_id = $request->id;
@@ -74,7 +74,7 @@ class HospitalController extends Controller
          }
      }
 
-          // Remove (Delete) the specified and all foodAllergy.
+          // Remove (Delete) the specified and all Hospital.
     public function destroy(Request $request)
     {
         $Type = $request->type;

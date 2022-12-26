@@ -41,8 +41,7 @@
                                             placeholder="Enter Image">
                                     </div>
                                     <br>
-                                    <div class="form-group" id="Image" style="display: none;">
-                                    </div>
+                                    <img src="" alt="" id="Image" width="70px">
                             </div>
 
                         </div>

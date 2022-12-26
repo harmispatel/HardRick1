@@ -18,11 +18,10 @@ trait MediaTrait {
         $destinationPath = public_path('specialist/'); // upload path
         $file_og_name = str_replace(' ','_',$image->getClientOriginalName());
         $specialistImage = time() . "." . $file_og_name;
-        $image->move($destinationPath, $specialistImage);
+        $image->move($destinationPath, $specialistImage);   
         return  $specialistImage;
-        
-       
     }
+
 
     
 

@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use Yajra\DataTables\Facades\DataTables;
 use App\Models\Specialist;
 use App\Traits\MediaTrait;
+use App\Http\Requests\SpecialistRequest;
+
 
 
 
@@ -21,7 +23,7 @@ class SpecialistController extends Controller
         return view('admin.Specialist.Specialist_list');
     }
 
-     // Load Foodallergy Data.
+     // Load Specialist Data.
      public function loadSpecialistData(Request $request)
      {
          if ($request->ajax()) {
@@ -56,13 +58,16 @@ class SpecialistController extends Controller
 
      }
 
-     public function store(Request $request)
+     public function store(SpecialistRequest $request)
      {
          try {
              $id =  $request->id;
              $input = $request->except('_token', 'id');
             
-             $input['image'] = $this->saveImage($request,'image');
+
+             if ($request->has('image')) {
+                $input['image'] = $this->saveImage($request,'image');
+             }
 
              if ($id == 0) {
                 Specialist::insert($input);
@@ -79,17 +84,41 @@ class SpecialistController extends Controller
      }
 
      
-        // Show the form for editing the specified foodAllergy.
+        // Show the form for editing the specified Specialist.
         public function edit(Request $request)
         {
             $specialist_id = $request->id;
    
             try {
                 $data = Specialist::where('id', $specialist_id)->first();
+                $default_image = asset("/public/image/default-image.jpeg");
+                $path =  asset("public/specialist/$data->image");
+                $data['image'] = ($data->image) ? $path : $default_image;
+
                 return $this->sendResponse(true, "Hospital has been Retrive SuccessFully", $data);
             } catch (\Throwable $th) {
                 return $this->sendResponse(false, "500, Internal Server Error!");
             }
         }
+
+          // Remove (Delete) the specified and all Specialist.
+    public function destroy(Request $request)
+    {
+        $Type = $request->type;
+        try {
+            if ($Type == 1) {
+                $specialist_id = $request->id;
+                Specialist::where('id', $specialist_id)->delete();
+                return $this->sendResponse(true, "Hospital has been Deleted SuccessFully", $Type);
+            } else {
+                
+                $ids = $request->id;
+                Specialist::whereIn('id',$ids)->delete();
+                return $this->sendResponse(true, "Hospital has been Deleted SuccessFully", $Type);
+            }
+        } catch (\Throwable $th) {
+            return $this->sendResponse(false, "500, Internal Server Error!");
+        }
+    }
 
 }

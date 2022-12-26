@@ -130,7 +130,7 @@
 @section('page-js')
     <script type="text/javascript">
         var url = "{{ route('loadHospital-data') }}";
-        // Load ChronicDiseases
+        // Load Hospital
         loadData('11', '#HospitalTable', url);
 
         $('#master').on('click', function(e) {

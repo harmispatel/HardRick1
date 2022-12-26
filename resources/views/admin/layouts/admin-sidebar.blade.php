@@ -92,6 +92,18 @@
         <li class="nav-item">
             <a class="nav-link
             {{-- Active Tab Class --}}
+            {{ (in_array('Askdoctor',$url)) ? 'active-tab' : '' }}" href="{{ route('Askdoctor') }}">
+                <i class="fa fa-user-md"
+                {{-- Icon Tab Class --}}
+                {{ (in_array('Askdoctor',$url)) ? 'icon-tab' : '' }}"></i>
+                <span>{{ __('Ask Doctor') }}</span>
+            </a>
+        </li>
+        <!-- End Dashboard Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link
+            {{-- Active Tab Class --}}
             {{ (in_array('Hospital',$url)) ? 'active-tab' : '' }}" href="{{ route('Hospital') }}">
                 <i class="bi bi-hospital"
                 {{-- Icon Tab Class --}}

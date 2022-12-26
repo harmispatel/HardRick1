@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Admin\{DashboardController, ChronicDiseasesController, BloodTypeController, DragsAllergyController, FoodAllergyController, HospitalController, SubscriptionController, SpecialistController};
+use App\Http\Controllers\Admin\{DashboardController, ChronicDiseasesController, BloodTypeController, DragsAllergyController, FoodAllergyController, HospitalController, SubscriptionController, SpecialistController, AskDoctorController};
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\{Auth, Route};
 
@@ -82,12 +82,18 @@ Route::group(['prefix' => 'admin'], function()
          Route::post('/delete-Subscription', [SubscriptionController::class,'destroy'])->name('delete-Subscription');
          Route::post('/edit-Subscription', [SubscriptionController::class,'edit'])->name('edit-Subscription');
 
-        //  Specialist
-        Route::get('Specialist',[SpecialistController::class,'index'])->name('Specialist');
+        // Specialist
+         Route::get('Specialist',[SpecialistController::class,'index'])->name('Specialist');
          Route::get('/Specialist-data', [SpecialistController::class,'loadSpecialistData'])->name('loadSpecialist-data');
          Route::post('/store-Specialist', [SpecialistController::class,'store'])->name('store-Specialist');
          Route::post('/delete-Specialist', [SpecialistController::class,'destroy'])->name('delete-Specialist');
          Route::post('/edit-Specialist', [SpecialistController::class,'edit'])->name('edit-Specialist');
+
+        // Askdoctor
+        Route::get('Askdoctor',[AskDoctorController::class,'index'])->name('Askdoctor');
+        Route::get('/Askdoctor-data', [AskDoctorController::class,'loadAskdoctorData'])->name('loadAskdoctor-data');
+        Route::post('/Askdoctor-change', [AskDoctorController::class,'assign_doc'])->name('Askdoctor-change');
+
 
         
 
