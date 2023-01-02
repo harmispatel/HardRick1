@@ -589,8 +589,8 @@ function assign_doc(assigndoc,askdId)
         jQuery.ajax({
             url: "delete-time",  
             type: 'post',  
-            data: {'id':id },   
-            success: function (data) {
+            data: {'id':id },  
+                success: function (data) {
                 jQuery("#times"+id).remove();
             }
         });
