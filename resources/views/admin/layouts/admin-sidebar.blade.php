@@ -23,6 +23,26 @@
         <li class="nav-item">
             <a class="nav-link
             {{-- Active Tab Class --}}
+            {{ (in_array('Doctor',$url)) ? 'active-tab' : '' }}" href="{{ route('Doctor') }}">
+                <i class="fa fa-user-md
+                {{-- Icon Tab Class --}}
+                {{ (in_array('Doctor',$url)) ? 'icon-tab' : '' }}"></i>
+                <span>{{ __('Doctor') }}</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link
+            {{-- Active Tab Class --}}
+            {{ (in_array('Patient',$url)) ? 'active-tab' : '' }}" href="{{ route('Patient') }}">
+                <i class="bi bi-person-fill
+                {{-- Icon Tab Class --}}
+                {{ (in_array('Patient',$url)) ? 'icon-tab' : '' }}"></i>
+                <span>{{ __('Patient') }}</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link
+            {{-- Active Tab Class --}}
             {{ (in_array('Chronic-diseases',$url)) ? 'active-tab' : '' }}" href="{{ route('Chronic-disease') }}">
                 <i class="fa fa-user-secret
                 {{-- Icon Tab Class --}}
@@ -100,6 +120,17 @@
             </a>
         </li>
         <!-- End Dashboard Nav -->
+        <li class="nav-item">
+            <a class="nav-link
+            {{-- Active Tab Class --}}
+            {{ (in_array('Appointment',$url)) ? 'active-tab' : '' }}" href="{{ route('Appointment') }}">
+                <i class="bi bi-calendar"
+                {{-- Icon Tab Class --}}
+                {{ (in_array('Appointment',$url)) ? 'icon-tab' : '' }}"></i>
+                <span>{{ __('Appointment') }}</span>
+            </a>
+        </li>
+        <!-- End Dashboard Nav -->
 
         <li class="nav-item">
             <a class="nav-link
@@ -113,7 +144,17 @@
         </li>
         <!-- End Dashboard Nav -->
 
-
+        <li class="nav-item">
+            <a class="nav-link
+            {{-- Active Tab Class --}}
+            {{ (in_array('Setting',$url)) ? 'active-tab' : '' }}" href="{{ route('Setting') }}">
+                <i class="bi bi-gear-fill"
+                {{-- Icon Tab Class --}}
+                {{ (in_array('Setting',$url)) ? 'icon-tab' : '' }}"></i>
+                <span>{{ __('Setting') }}</span>
+            </a>
+        </li>
+        <!-- End Dashboard Nav -->
 
 
      </ul>

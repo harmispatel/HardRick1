@@ -37,11 +37,11 @@
                                     <div class="form-group">
                                         <label for="name" class="form-label">Image<span
                                                 class="text-danger">*</span></label>
-                                        <input type="file" id="image" name="image" class="form-control"
+                                        <input type="file" id="image" oninput="pic.src=window.URL.createObjectURL(this.files[0])" name="image" class="form-control"
                                             placeholder="Enter Image">
                                     </div>
                                     <br>
-                                    <img src="" alt="" id="Image" width="70px">
+                                    <img src="" alt="" id="pic" width="70px">
                             </div>
 
                         </div>
@@ -144,12 +144,5 @@
         // Load ChronicDiseases
         loadData('7', '#SpecialistTable', url);
 
-        $('#master').on('click', function(e) {
-        if ($(this).is(':checked', true)) {
-            $(".sub_chk").prop('checked', true);
-        } else {
-            $(".sub_chk").prop('checked', false);
-        }
-    });
     </script>
 @endsection

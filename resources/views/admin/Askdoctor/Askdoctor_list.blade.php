@@ -61,7 +61,7 @@
                     <table class="table table-striped" id="AskDoctorTable">
                         <thead>
                             <tr>
-                                <th><input class="form-check-input " type="checkbox" id="master" value=""></th>
+                                {{-- <th><input class="form-check-input " type="checkbox" id="master" value=""></th> --}}
                                 <th>Id</th>
                                 <th>Specialist</th>
                                 <th>Users</th>
@@ -88,12 +88,5 @@
         // Load ChronicDiseases
         loadData('9', '#AskDoctorTable', url);
 
-        $('#master').on('click', function(e) {
-        if ($(this).is(':checked', true)) {
-            $(".sub_chk").prop('checked', true);
-        } else {
-            $(".sub_chk").prop('checked', false);
-        }
-    });
     </script>
 @endsection

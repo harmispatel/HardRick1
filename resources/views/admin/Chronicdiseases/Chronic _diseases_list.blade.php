@@ -133,12 +133,5 @@
         // Load ChronicDiseases
         loadData('3', '#ChronicDiseaseTable', url);
 
-        $('#master').on('click', function(e) {
-        if ($(this).is(':checked', true)) {
-            $(".sub_chk").prop('checked', true);
-        } else {
-            $(".sub_chk").prop('checked', false);
-        }
-    });
     </script>
 @endsection

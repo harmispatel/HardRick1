@@ -30,7 +30,14 @@
 {{-- Jquey UI --}}
 <link rel="stylesheet" href="{{ asset('public/assets/vendor/css/jquery-ui.css') }}">
 
+{{-- select2 --}}
+<link href="{{ asset('public/assets/admin/css/select2/select2.min.css') }}" rel="stylesheet" />
 
+{{-- datepiker --}}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
+
+{{-- timepicker --}}
+<link rel="stylesheet" href="{!! asset('/public/plugins/timepicker/jquery.timepicker.css') !!}">
 
 <!-- =======================================================
 * Template Name: NiceAdmin - v2.3.1

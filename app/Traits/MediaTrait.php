@@ -12,14 +12,26 @@ trait MediaTrait {
      * @param Request $request
      * @return string $image_path
      */
-    public function saveImage($request)
+    public function saveImage($request,$folderName)
     {
+        // dd($folder_name);
         $image = $request['image'];
-        $destinationPath = public_path('specialist/'); // upload path
-        $file_og_name = str_replace(' ','_',$image->getClientOriginalName());
-        $specialistImage = time() . "." . $file_og_name;
-        $image->move($destinationPath, $specialistImage);   
-        return  $specialistImage;
+        $destinationPath = public_path($folderName); // upload path
+        $file_og_name = str_replace(' ','%',$image->getClientOriginalName());
+        $Image = time() . "." . $file_og_name;
+        $image->move($destinationPath, $Image);   
+        return  $Image;
+    }
+
+    public function clinicImages($request)
+    {
+        // dd($folder_name);
+        $image = $request['clinicImage'];
+        $destinationPath = public_path('clinic/'); // upload path
+        $file_og_name = str_replace(' ','%',$image->getClientOriginalName());
+        $clinicImage = time() . "." . $file_og_name;
+        $image->move($destinationPath, $clinicImage);   
+        return  $clinicImage;
     }
 
 

@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Admin\{DashboardController, ChronicDiseasesController, BloodTypeController, DragsAllergyController, FoodAllergyController, HospitalController, SubscriptionController, SpecialistController, AskDoctorController};
+use App\Http\Controllers\Admin\{DashboardController, ChronicDiseasesController, BloodTypeController, DragsAllergyController, FoodAllergyController, HospitalController, SubscriptionController, SpecialistController, AskDoctorController, AppointmentController,PatientController,DoctorController, SettingController};
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\{Auth, Route};
 
@@ -40,6 +40,21 @@ Route::group(['prefix' => 'admin'], function()
         // Dashboard
         Route::get('dashboard',[DashboardController::class,'index'])->name('dashboard');
 
+          // Patient
+          Route::get('Patient',[PatientController::class,'index'])->name('Patient');
+          Route::get('/Patient-data', [PatientController::class,'loadPatientData'])->name('loadPatient-data');
+          Route::post('/store-Patient', [PatientController::class,'store'])->name('store-Patient');
+          Route::post('/delete-Patient', [PatientController::class,'destroy'])->name('delete-Patient');
+          Route::post('/edit-Patient', [PatientController::class,'edit'])->name('edit-Patient');
+
+          // Doctor
+          Route::get('Doctor',[DoctorController::class,'index'])->name('Doctor');
+          Route::get('/Doctor-data', [DoctorController::class,'loadDoctorData'])->name('loadDoctor-data');
+          Route::post('/store-Doctor', [DoctorController::class,'store'])->name('store-Doctor');
+          Route::post('/delete-Doctor', [DoctorController::class,'destroy'])->name('delete-Doctor');
+          Route::post('/edit-Doctor', [DoctorController::class,'edit'])->name('edit-Doctor');
+          Route::post('/delete-time',[DoctorController::class,'timeDestory'])->name('doctor-delete-time');
+  
         // Chronic diseases
         Route::get('Chronic-diseases',[ChronicDiseasesController::class,'index'])->name('Chronic-disease');
         Route::get('/Chronic-diseases-data', [ChronicDiseasesController::class,'loadChronicDiseasesData'])->name('loadChronicDiseases-data');
@@ -93,6 +108,15 @@ Route::group(['prefix' => 'admin'], function()
         Route::get('Askdoctor',[AskDoctorController::class,'index'])->name('Askdoctor');
         Route::get('/Askdoctor-data', [AskDoctorController::class,'loadAskdoctorData'])->name('loadAskdoctor-data');
         Route::post('/Askdoctor-change', [AskDoctorController::class,'assign_doc'])->name('Askdoctor-change');
+
+        
+        // Appointment
+        Route::get('Appointment',[AppointmentController::class,'index'])->name('Appointment');
+        Route::get('/Appointment-data', [AppointmentController::class,'loadAppointmentData'])->name('loadAppointment-data');
+
+        // Setting
+	Route::get('Setting', [SettingController::class,'form'])->name('Setting');
+	Route::post('/Setting-store', [SettingController::class,'store'])->name('settings.save');
 
 
         

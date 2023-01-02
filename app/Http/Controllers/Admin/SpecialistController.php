@@ -66,7 +66,7 @@ class SpecialistController extends Controller
             
 
              if ($request->has('image')) {
-                $input['image'] = $this->saveImage($request,'image');
+                $input['image'] = $this->saveImage($request,'specialist');
              }
 
              if ($id == 0) {

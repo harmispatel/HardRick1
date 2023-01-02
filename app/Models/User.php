@@ -38,4 +38,27 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function hasManyallergy()
+    {
+        return $this->hasMany(UserAllergy::class, 'user_id', 'id');
+    }
+    public function hasOnePatient()
+    {
+        return $this->hasOne(Patient::class, 'user_id', 'id');
+    }
+     public function hasOneDoctor()
+    {
+        return $this->hasOne(Doctor::class, 'user_id', 'id');
+    }
+    public function hasManyDoctorSpecialist()
+    {
+        return $this->hasMany(DoctorSpecialist::class, 'user_id', 'id');
+    }
+    public function hasManyDoctorTime()
+    {
+        return $this->hasMany(DoctorTime::class, 'user_id', 'id');
+    }
+
+    
 }

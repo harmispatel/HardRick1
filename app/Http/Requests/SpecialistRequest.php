@@ -37,7 +37,7 @@ class SpecialistRequest extends FormRequest
            ];
         }else{
             $rules += [
-                'image' => 're|mimes:jpeg,jpg,png,gif,PNG',
+                'image' => 'mimes:jpeg,jpg,png,gif,PNG',
                ];
         }
         

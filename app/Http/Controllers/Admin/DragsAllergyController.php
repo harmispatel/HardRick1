@@ -89,7 +89,7 @@ class DragsAllergyController extends Controller
                 return $this->sendResponse(true, "bloodtype has been Deleted SuccessFully", $Type);
             } else {
                 
-                $ids = $request->id;
+                $ids = $request->id;    
                 DragsAllergy::whereIn('id',$ids)->delete();
                 return $this->sendResponse(true, "bloodtype has been Deleted SuccessFully", $Type);
             }

@@ -22,6 +22,8 @@
 {{-- Toastr --}}
 <script src="{{ asset('public/assets/admin/js/toastr/toastr.min.js') }}"></script>
 
+{{-- ckeditor --}}
+<script src="//cdn.ckeditor.com/4.11.1/standard/ckeditor.js"></script>
 
 
 {{-- Data Table --}}
@@ -30,3 +32,39 @@
 {{-- Jquery UI --}}
 <script src="{{ asset('public/assets/vendor/js/jquery-ui.js') }}"></script>
 
+
+{{-- select 2 --}}
+<script src="{{ asset('public/assets/admin/js/select2/select2.min.js') }}"></script>
+
+{{-- timepicker --}}
+<script src="{!! asset('/public/plugins/timepicker/jquery.timepicker.js') !!}"></script>
+
+<script>
+$(document).ready(function() {
+    $('.select2').select2({
+        width:370
+    });
+    
+});
+function select2Refresh(){
+  $('.select2').select2();
+
+}
+$('#master').on('click', function(e) {
+    if ($(this).is(':checked', true)) {
+        $(".sub_chk").prop('checked', true);
+    } else {
+        $(".sub_chk").prop('checked', false);
+    }
+});
+
+$('input.timepicker').timepicker({
+        timeFormat: 'h:i A',
+        step: 1,
+        maxTime: '24:00', 
+        startTime: '00:00',
+        dynamic: true,
+        dropdown: true,
+        scrollbar: true
+    }); 
+</script>

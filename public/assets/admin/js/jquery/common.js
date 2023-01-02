@@ -82,9 +82,20 @@ const { defaultsDeep } = require("lodash");
             $('#price').removeClass('is-invalid');
             $('#days').removeClass('is-invalid');
             $('#image').removeClass('is-invalid');
-            $('#Image').html('');
-            $('#Image').hide();
+            $('#address').removeClass('is-invalid');
+            $('#birth_date').removeClass('is-invalid');
+            $('#email').removeClass('is-invalid');
+           $('#password').removeClass('is-invalid');
+           $('#dragsAllergy').removeClass('is-invalid');
 
+            $('#specialists').val('').change();
+            $('#Foodallergy').val('').change();
+            $('#dragsAllergy').val('').change();
+            $('#Chronicdiseases').val('').change();
+            $('#pic').attr('src','');
+            $('#pic').show();
+            $('#pic1').attr('src','');
+            $('#pic1').show();
             toastr.clear();
             $(labelName).text(name); 
             $(modalName).modal('show');
@@ -98,30 +109,81 @@ const { defaultsDeep } = require("lodash");
             $('#price').removeClass('is-invalid');
             $('#days').removeClass('is-invalid');
             $('#image').removeClass('is-invalid');
+            $('#address').removeClass('is-invalid');
+            $('#birth_date').removeClass('is-invalid');
+            $('#email').removeClass('is-invalid');
+            $('#password').removeClass('is-invalid');
+            $('#dragsAllergy').removeClass('is-invalid');
+            $('#specialists').val('').change();
 
-
+            $('#Foodallergy').val('').change();
+            $('#dragsAllergy').val('').change();
+            $('#Chronicdiseases').val('').change();
+            $('#pic').attr('src','');
+            $('#pic').show();
+            $('#pic1').attr('src','');
+            $('#pic1').show();
             toastr.clear();
             $.ajax({
                 type: "POST",
                 url:url,
                 dataType: "JSON",
                 data: {
-                    // '_token': "csrf_token()",
                     'id': id,
                 },
                 success: function(response) {
                     if (response.success)
                     {
                         const datas = response.data;
+                        console.log(datas);
                         $('#name').val(datas.name);
                         $('#name_ar').val(datas.name_ar);
                         $('#phone').val(datas.phone);
                         $('#price').val(datas.price);
                         $('#days').val(datas.days);
                         $('#id').val(datas.id);
-                        $('#Image').html('');
-                        $('#Image').attr('src',datas.image);
-                        $('#Image').show();
+                        $('#email').val(datas.email);
+                        $('#address').val(datas.address);
+                        $('#birth_date').val(datas.birth_date);
+                        $('#Bloodtype').val(datas.bloodType);
+                        $('#averagehour').val(datas.averagehour);
+                        $('#certificates').val(datas.certificates);
+                        $('#discounts').val(datas.discounts);
+                        $('#discount_rule').val(datas.discount_rule);
+                        $('#insta_link').val(datas.insta_link);
+                        $('#facebook_link').val(datas.facebook_link);
+                        $('#yearofexp').val(datas.yearofexp);
+                        $('#price_of_ticket').val(datas.price_of_ticket);
+                        $('#info').val(datas.info);
+                        $('#datefrom').val(datas.from_date);
+                        $('#dateto').val(datas.to_date);
+                        $('#status').val(datas.status);
+                        $('#status_data').val(datas.status_data);
+                        $('#addTime').html();
+                        $('#addTime').html(datas.html);
+                        $('#workHours').remove();
+                        $("#specialists").select2({
+                            multiple: true,
+                          });
+                          $('#specialists').val(datas.specialist_id).trigger('change');
+                        $("#Foodallergy").select2({
+                            multiple: true,
+                          });
+                          $('#Foodallergy').val(datas.Foodallergy_id).trigger('change');
+                          $("#dragsAllergy").select2({
+                            multiple: true,
+                          });
+                          $('#dragsAllergy').val(datas.dragsallergy_id).trigger('change'); 
+                           $("#Chronicdiseases").select2({
+                            multiple: true,
+                          });
+                          $('#Chronicdiseases').val(datas.chronicdiseases_id).trigger('change');
+                          $('#pic1').html('');
+                          $('#pic1').attr('src',datas.clinicImage);
+                          $('#pic1').show();
+                        $('#pic').html('');
+                        $('#pic').attr('src',datas.image);
+                        $('#pic').show();
 
                     } else {
                         toastr.error(response.message);
@@ -187,7 +249,7 @@ function loadData(type,tableIdName,url)
     }else if(type==9)
     {
         var  columns = [
-            {data:'checkbox', name:'checkbox', "orderable":false,"bSortable": true},
+            // {data:'checkbox', name:'checkbox', "orderable":false,"bSortable": true},
             {data: 'id', name: 'id'},
             {data: 'specialist', name: 'specialist'},
             {data: 'user', name: 'user'},
@@ -195,6 +257,47 @@ function loadData(type,tableIdName,url)
             {data: 'doctor', name: 'doctor'},
 
         ]
+    }else if(type==10)
+    {
+        var  columns = [
+            // {data:'checkbox', name:'checkbox', "orderable":false,"bSortable": true},
+            {data: 'id', name: 'id'},
+            {data: 'doctor', name: 'doctor'},
+            {data: 'username', name: 'username'},
+            {data: 'book_date', name: 'book_date'},
+            {data: 'book_time', name: 'book_time'},
+            {data: 'book_day', name: 'book_day'},
+            {data: 'discount', name: 'discount'},
+            {data: 'price', name: 'price'},
+            {data: 'location', name: 'location'},
+
+        ]
+
+    }else if(type==2){
+        var  columns = [
+            {data:'checkbox', name:'checkbox', "orderable":false,"bSortable": true},
+            {data: 'id', name: 'id'},
+            {data: 'name', name: 'name'},
+            {data: 'email', name: 'email'},
+            {data: 'phone', name: 'phone'},
+            {data: 'user_status', name: 'user_status'},
+            {data: 'Image', name: 'Image'},
+            {data: 'actions', name: 'actions', "orderable":false,"bSortable": true},
+
+        ]
+
+    }
+    else if(type==1){
+        var  columns = [
+            {data:'checkbox', name:'checkbox', "orderable":false,"bSortable": true},
+            {data: 'id', name: 'id'},
+            {data: 'name', name: 'name'},
+            {data: 'user_status', name: 'user_status'},
+            {data: 'Image', name: 'Image'},
+            {data: 'actions', name: 'actions', "orderable":false,"bSortable": true},
+
+        ]
+
     }
     var dataTable = $(tableIdName).DataTable();
     dataTable.destroy();
@@ -225,8 +328,16 @@ function loadData(type,tableIdName,url)
         $('#phone').removeClass('is-invalid');
         $('#price').removeClass('is-invalid');
         $('#days').removeClass('is-invalid');
-        $('#Image').html('')
-        $('#Image').hide();
+        $('#address').removeClass('is-invalid');
+        $('#birth_date').removeClass('is-invalid');
+        $('#email').removeClass('is-invalid');
+        $('#password').removeClass('is-invalid');
+        $('#dragsAllergy').removeClass('is-invalid');
+
+
+
+        $('#pic').html('')
+        $('#pic').hide();
         
         toastr.clear();
         
@@ -258,14 +369,22 @@ function loadData(type,tableIdName,url)
             },
             error: function(response) {
                 var validationError = (response?.responseJSON?.errors) ? response.responseJSON.errors : '';
-
+                console.log(validationError);
                 if (validationError != '') {
+                   
                     var nameError = (validationError.name) ? validationError.name : '';
                     var name_arError = (validationError.name_ar) ? validationError.name_ar : '';
                     var phoneError = (validationError.phone) ? validationError.phone : '';
                     var priceError = (validationError.price) ? validationError.price : '';
                     var daysError = (validationError.days) ? validationError.days : '';
                     var imageError = (validationError.image) ? validationError.image : '';
+                    var addressError = (validationError.address) ? validationError.address : '';
+                    var birth_dateError = (validationError.birth_date) ? validationError.birth_date : '';
+                    var emailError = (validationError.email) ? validationError.email : '';
+                    var passwordError = (validationError.password) ? validationError.password : '';
+                    var dragsError = (validationError.dragsAllergy) ? validationError.dragsAllergy: '';
+                    // var passwordError = (validationError.password) ? validationError.password : '';
+                    // var passwordError = (validationError.password) ? validationError.password : '';
                     
 
                     // Name Error
@@ -302,6 +421,31 @@ function loadData(type,tableIdName,url)
                         toastr.error(imageError);
                         $('#image').addClass('is-invalid');
                     }
+                      // address Error
+                      if (addressError != '') {
+                        toastr.error(addressError);
+                        $('#address').addClass('is-invalid');
+                    }
+                     // birth Error
+                     if (birth_dateError != '') {
+                        toastr.error(birth_dateError);
+                        $('#birth_date').addClass('is-invalid');
+                    }
+                      // Email Error
+                      if (emailError != '') {
+                        toastr.error(emailError);
+                        $('#email').addClass('is-invalid');
+                    }
+                      // password Error
+                      if (passwordError != '') {
+                        toastr.error(passwordError);
+                        $('#password').addClass('is-invalid');
+                    }
+                    // Email Error
+                    if (dragsError != '') {
+                        toastr.error(dragsError);
+                        $('#dragsAllergy').addClass('is-invalid');
+                    }
 
                  }
             }
@@ -333,4 +477,122 @@ function assign_doc(assigndoc,askdId)
        });
 
        }
-       
+       function statusData(val)
+       {                                   
+           if(val == 1)
+           {
+               var currdate = new Date();
+               var dd = currdate.getDate();
+               var mm = currdate.getMonth() + 1;
+               var y = currdate.getFullYear();
+               var fromdate = mm + '/' + dd + '/' + y;
+                 
+               var newdate = new Date(fromdate);
+               newdate.setDate(newdate.getDate() + 7);
+               var dd1 = newdate.getDate();
+               var mm1 = newdate.getMonth() + 1;
+               var y1 = newdate.getFullYear();
+               var fromdate11 = mm1+ '/' + dd1 + '/' + y1;                                  
+          
+               // $('#datefrom').datepicker({
+               //     format: "mm/dd/yyyy",
+               //     todayHighlight: true,
+               //     startDate: fromdate,
+               //     endDate: fromdate11,
+               //     autoclose: true,
+               //     minDate:fromdate
+                   
+               // });                  
+        
+         
+              console.log(fromdate);
+              console.log(fromdate11);
+              $('#datefrom').val(fromdate);
+              $('#dateto').val(fromdate11);
+   
+               // $('#datefrom').datepicker('setDate', fromdate);                                             
+               // $('#dateto').datepicker('setDate', fromdate11);
+           }                                            
+           else if(val == 2)
+           {
+            var currdate = new Date();
+            var dd = currdate.getDate();
+            var mm = currdate.getMonth() + 1;
+            var y = currdate.getFullYear();
+            var fromdate = mm + '/' + dd + '/' + y;
+            currdate.setMonth(currdate.getMonth() + 1);
+        
+            var dd1 = currdate.getDate();
+            var mm1 = currdate.getMonth() + 1;
+            var y1 = currdate.getFullYear();
+            var fromdate11 = mm1+ '/' + dd1 + '/' + y1;
+                
+            
+   
+              $('#datefrom').val(fromdate);
+              $('#dateto').val(fromdate11);
+                                
+               
+           }
+           else if(val == 3)
+           {
+               var currdate = new Date();
+               var dd = currdate.getDate();
+               var mm = currdate.getMonth() + 1;
+               var y = currdate.getFullYear();
+               var fromdate = mm + '/' + dd + '/' + y;
+                 
+               var newdate = new Date(fromdate);
+               newdate.setDate(newdate.getDate());
+               var dd1 = newdate.getDate();
+               var mm1 = newdate.getMonth() + 1;
+               var y1 = newdate.getFullYear() + 1;
+               var fromdate11 = mm1+ '/' + dd1 + '/' + y1;
+                          
+               // $('#datefrom').datepicker({
+               //     format: "mm/dd/yyyy",
+               //     todayHighlight: true,
+               //     startDate: fromdate,
+               //     endDate: fromdate11,
+               //     autoclose: true,
+               // });
+              
+               console.log(fromdate);
+              console.log(fromdate11);
+              
+              $('#datefrom').val(fromdate);
+              $('#dateto').val(fromdate11);
+   
+               // $('#datefrom').datepicker('minDate', fromdate);                                         
+               // $('#datefrom').datepicker('setDate', fromdate);
+               // $('#dateto').datepicker('setDate', fromdate11);
+   
+           }
+       }
+
+    
+       function removeTime(id){
+        jQuery("#time"+id).remove();
+    } 
+    function timePickerRefresh(){
+        $('input.timepicker').timepicker({
+            timeFormat: 'h:i A',
+            step: 1,
+            maxTime: '24:00', 
+            startTime: '00:00',
+            dynamic: true,
+            dropdown: true,
+            scrollbar: true
+        })
+    }
+    function removeTimeUpdate(id){
+        jQuery.ajax({
+            url: "delete-time",  
+            type: 'post',  
+            data: {'id':id },   
+            success: function (data) {
+                jQuery("#times"+id).remove();
+            }
+        });
+    }
+   
