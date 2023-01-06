@@ -14,4 +14,9 @@ class Patient extends Model
 
     protected $guarded = [];
 
+    public function hasOneBloodType()
+        {
+            return $this->hasOne(BloodType::class, 'id', 'blood_type_id');
+        }
+
 }

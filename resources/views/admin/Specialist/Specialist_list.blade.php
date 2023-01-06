@@ -33,15 +33,15 @@
                                         placeholder="Enter Specialist Name Arabic">
                                 </div>
                             </div>
-                                <div class="col-md-6 mb-2">
-                                    <div class="form-group">
-                                        <label for="name" class="form-label">Image<span
-                                                class="text-danger">*</span></label>
-                                        <input type="file" id="image" oninput="pic.src=window.URL.createObjectURL(this.files[0])" name="image" class="form-control"
-                                            placeholder="Enter Image">
-                                    </div>
-                                    <br>
-                                    <img src="" alt="" id="pic" width="70px">
+                            <div class="col-md-6 mb-2">
+                                <div class="form-group">
+                                    <label for="name" class="form-label">Image<span
+                                            class="text-danger">*</span></label>
+                                    <input type="file" id="image" oninput="pic.src=window.URL.createObjectURL(this.files[0])" name="image" class="form-control"
+                                        placeholder="Enter Image">
+                                </div>
+                                <br>
+                                <img src="" alt="" id="pic" width="70px">
                             </div>
 
                         </div>

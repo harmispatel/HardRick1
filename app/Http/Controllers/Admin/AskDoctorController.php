@@ -20,22 +20,22 @@ class AskDoctorController extends Controller
      {
          if ($request->ajax()) {
              $AskDoctor = AskDoctor::with(['specialist','user','doctor'])->get();
-
              $doctorsData = User::where('role', 1)->get();
              return DataTables::of($AskDoctor)
              ->addIndexColumn()
              ->addColumn('specialist', function ($row) {
-                 return $row->specialist['name'];
+                 return isset($row->specialist['name']) ? $row->specialist['name'] :''  ;
              })
              ->addColumn('user', function ($row) {
-                 return $row->user['name'];
+                 return isset($row->user['name']) ? $row->user['name'] : '';
              })
              ->addColumn('doctor', function ($row) use ($doctorsData) {
                  $html='';
                  $html.='<select class="form-select" onchange="assign_doc(this.value,'.$row->id.')">';
                  foreach ($doctorsData as  $value) {
                      $html.='<option value="'.$value->id.'"';
-                     if ($row->doctor['id'] == $value->id) {
+                     $doctorId=isset($row->doctor['id']) ? $row->doctor['id'] : ''; 
+                     if ($doctorId == $value->id) {
                          $html .="selected";
                      }
                      $html .= '>'.$value->name.'</option>';

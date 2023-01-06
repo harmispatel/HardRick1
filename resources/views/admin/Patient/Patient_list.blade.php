@@ -3,6 +3,7 @@
     .select2-container.select2-container--default.select2-container--open {
         z-index: 5000;
     }
+
 </style>
 @section('title', 'Patient')
 
@@ -262,6 +263,7 @@
         // Load ChronicDiseases
         loadData('2', '#PatientTable', url);
         
-      
+       
     </script>
+
 @endsection

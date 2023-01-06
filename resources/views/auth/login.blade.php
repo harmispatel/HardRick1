@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>A D M I N</title>
+    <title>DLENY</title>
     {{-- Bootstrap CSS --}}
     <link rel="stylesheet" href="{{ asset('public/assets/frontend/css/bootstrap/bootstrap.min.css') }}">
 
@@ -27,8 +27,8 @@
         @csrf
         <div class="row">
             <div class="col-md-12 text-center">
-                <img alt="logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDOLfmIA4IGukHskftrTRSelu-K73Xu9drKw&usqp=CAU" class="theme-logo">
-                <h4 class="mt-2">A D M I N</h4>
+                <img alt="logo" src="{{get_site_setting('logo')}}" class="theme-logo">
+                <h4 class="mt-2">D L E N Y</h4>
             </div>
             @if (session()->has('error'))
                 <div class="col-md-12 mt-4">
@@ -77,7 +77,7 @@
             </div>
             <div class="col-md-12 mt-4 text-center">
                 <div class="form-group forget-pass">
-                    <a href="https://www.google.com">Forget Password?</a>
+                    <a href="{{ route('password.request') }}">Forget Password?</a>
                 </div>
             </div>
         </div>
@@ -98,18 +98,13 @@
     <script type="text/javascript">
 
         // Error Mesages
-        var msg_arr = "{{ (Session::has('errors')) ? session('errors') : '' }}";
-        var newArr = JSON.parse(msg_arr.replace(/&quot;/g,'"'));
-
-        Object.values(newArr).forEach(val => {
-            @if(Session::has('errors'))
-                toastr.options =
-                {
-                    "closeButton" : true,
-                    "progressBar" : true,
-                    timeOut: 10000,
-                }
-                toastr.error(val);
+        $(document).ready(function() {
+        
+            toastr.options.timeOut = 5000;
+            @if (Session::has('error'))
+                toastr.error('{{ Session::get('error') }}');
+            @elseif(Session::has('success'))
+                toastr.success('{{ Session::get('success') }}');
             @endif
         });
         // End Error Messages

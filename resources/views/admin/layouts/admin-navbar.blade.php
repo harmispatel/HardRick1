@@ -2,18 +2,20 @@
     // UserDetails
     if(auth()->user())
     {
-        $userID = encrypt(auth()->user()->id);
+      
+        $userID = (auth()->user()->id);
         $userName = auth()->user()->name;
-        $userImage = auth()->user()->image;
+        $userImage =  asset('public/profileImage/'.auth()->user()->profile_pic);
     }
     else
     {
         $userID = '';
         $userName = '';
-        $userImage = '';
+        $userImage = asset('public/admin_images/demo_images/profiles/profile3.png');
     }
 
 @endphp
+
 
 
 <!-- ======= Header ======= -->
@@ -33,7 +35,7 @@
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="{{ asset('public/admin_images/demo_images/profiles/profile3.png') }}" alt="Profile" class="rounded-circle">
+            <img src="{{$userImage}}" alt="Profile" class="rounded-circle editp">
             <span class="d-none d-md-block dropdown-toggle ps-2">{{ $userName }}</span>
           </a><!-- End Profile Iamge Icon -->
 
@@ -47,9 +49,9 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
+              <a class="dropdown-item d-flex align-items-center" href="#" onclick="openaddmodel('Edit  Profile','{{$userID}}','profile','#userProfileForm','#userProfileModelLabel','#userProfileModel')">
                 <i class="bi bi-person"></i>
-                <span>My Profile</span>
+                <span>Profile</span>
               </a>
             </li>
             <li>
@@ -70,3 +72,55 @@
     </nav><!-- End Icons Navigation -->
 
   </header><!-- End Header -->
+
+{{-- Modal for Edit Profile --}}
+    <div class="modal fade" id="userProfileModel" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="userProfileModelLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="userProfileModelLabel"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" class="form" id="userProfileForm" enctype="multipart/form-data">
+                        @csrf
+                        <input type="hidden" name="user_id" id="user_id" value="">
+                        <div class="row">
+                            <div class="col-md-6 mb-2">
+                                <div class="form-group">
+                                    <label for="name" class="form-label"> Name <span
+                                            class="text-danger">*</span></label>
+                                    <input type="text" id="user_name" name="name" class="form-control"
+                                        placeholder="Enter Name">
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-2">
+                                <div class="form-group">
+                                    <label for="name" class="form-label">email<span
+                                            class="text-danger">*</span></label>
+                                    <input type="text" id="user_email" name="email" class="form-control"
+                                        placeholder="Enter Email">
+                                </div>
+                            </div>
+                             <div class="col-md-6 mb-2">
+                                <div class="form-group">
+                                    <label for="name" class="form-label">Image</label>
+                                    <input type="file" id="user_image" oninput="pic.src=window.URL.createObjectURL(this.files[0])" name="image" class="form-control"
+                                        placeholder="Enter Image">
+                                </div>
+                                <br>
+                                <img src="" alt="" id="user_pic" width="70px">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <a onclick="saveUpdateData('edit','#userProfileModel','userProfileForm','#blankTable','updateProfile')"
+                        class="btn btn-success" id="saveupdatebtn">Save</a>
+                </div>
+            </div>
+        </div>
+    </div>

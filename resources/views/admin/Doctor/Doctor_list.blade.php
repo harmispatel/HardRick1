@@ -61,8 +61,7 @@
                            
                                     <div class="col-md-6 mb-2">
                                         <div class="form-group">
-                                            <label for="name" class="form-label">Picture clinic<span
-                                                    class="text-danger">*</span></label>
+                                            <label for="name" class="form-label">Picture clinic</label>
                                             <input type="file" id="clinicImage" oninput="pic1.src=window.URL.createObjectURL(this.files[0])" name="clinicImage" class="form-control"
                                                 placeholder="Enter Image">
                                         </div>
@@ -127,16 +126,14 @@
                             </div>
                             <div class="col-md-6 mb-2">
                                 <div class="form-group">
-                                    <label for="name" class="form-label">Year of Experience<span
-                                            class="text-danger">*</span></label>
+                                    <label for="name" class="form-label">Year of Experience</label>
                                     <input type="text" id="yearofexp" name="yearofexp" class="form-control"
                                         placeholder="Enter your year of experience">
                                 </div>
                             </div>
                             <div class="col-md-6 mb-2">
                                 <div class="form-group">
-                                    <label for="name" class="form-label">certificate<span
-                                            class="text-danger">*</span></label>
+                                    <label for="name" class="form-label">certificate</label>
                                     <input type="text" id="certificates" name="certificates" class="form-control"
                                         placeholder="Enter your certificate">
                                 </div>
@@ -145,7 +142,7 @@
                                 <div class="form-group">
                                     <label for="email" class="form-label">Days<span
                                             class="text-danger">*</span></label>
-                                    <select class="form-control" name="status_data" id="status_data" onchange="statusData(this.value)" placeholder="choose days" required="" />
+                                    <select class="form-control" name="status_data" id="status_data" onchange="statusData(this.value)" placeholder="choose days"  />
                                     <option value="">Select Days</option>
                                     <option value="1">Week</option>
                                     <option value="2">Month</option>
@@ -155,24 +152,21 @@
                             </div>
                             <div class="col-md-6 mb-2">
                                 <div class="form-group">
-                                    <label for="name" class="form-label">Form<span
-                                        class="text-danger">*</span></label>
+                                    <label for="name" class="form-label">Form</label>
                                         <input type="text" id="datefrom" name="datefrom" class="setDate1 form-control"
                                         placeholder="form_date" readonly>
                                     </div>
                                 </div>
                                 <div class="col-md-6 mb-2">
                                     <div class="form-group">
-                                        <label for="name" class="form-label">To<span
-                                            class="text-danger">*</span></label>
+                                        <label for="name" class="form-label">To</label>
                                             <input type="text" id="dateto" name="dateto" class="form-control"
                                             placeholder="to_date" readonly>
                                         </div>
                                     </div>
                                     <div class="col-md-6 mb-2">
                                         <div class="form-group">
-                                            <label for="email" class="form-label">Avarage hour<span
-                                                    class="text-danger">*</span></label>
+                                            <label for="email" class="form-label">Avarage hour</label>
                                             <select class="form-control" name="averagehour" id="averagehour" required="" />
                                             <option value="10">10 min</option>
                                             <option value="15">15 min</option>
@@ -185,8 +179,7 @@
                                     </div>
                                     <div class="col-md-6 mb-2">
                                         <div class="form-group">
-                                            <label for="name" class="form-label">Discount<span
-                                                class="text-danger">*</span></label>
+                                            <label for="name" class="form-label">Discount</label>
                                                 <input type="text" id="discounts" name="discounts" class="form-control"
                                                 placeholder="Enter  discounts">
                                             </div>
@@ -194,14 +187,14 @@
                             
                                         <div class="col-md-6 mb-2">
                                             <div class="form-group">
-                                                <label for="email" class="form-label">Discount Rule<span class="text-danger">*</span></label>
+                                                <label for="email" class="form-label">Discount Rule</label>
                                                 <textarea  id="discount_rule" name="discount_rule" class="date form-control"
                                                     placeholder="Enter discount_rule"></textarea>
                                             </div>
                                         </div>
                             <div class="col-md-6 mb-2">
                                 <div class="form-group">
-                                    <label for="email" class="form-label">Information<span class="text-danger">*</span></label>
+                                    <label for="email" class="form-label">Information</label>
                                     <textarea  id="info" name="info" class="date form-control"
                                         placeholder="Enter Information"></textarea>
                                 </div>
@@ -209,16 +202,14 @@
                             
                             <div class="col-md-6 mb-2">
                                 <div class="form-group">
-                                    <label for="name" class="form-label">Instagram link<span
-                                        class="text-danger">*</span></label>
+                                    <label for="name" class="form-label">Instagram link</label>
                                         <input type="text" id="insta_link" name="insta_link" class="form-control"
                                         placeholder="Enter your Instagram link">
                                     </div>
                                 </div>
                                  <div class="col-md-6 mb-2">
                                     <div class="form-group">
-                                        <label for="name" class="form-label">Fackbook link<span
-                                            class="text-danger">*</span></label>
+                                        <label for="name" class="form-label">Fackbook link</label>
                                             <input type="text" id="facebook_link" name="facebook_link" class="form-control"
                                             placeholder="Enter your facebook_link">
                                         </div>
@@ -226,7 +217,7 @@
                                     <div class="col-md-6 mb-2">
                                         <div class="form-group">
                                             <label for="name" class="form-label">Price of ticket<span
-                                                class="text-danger">*</span></label>
+                                            class="text-danger">*</span></label>
                                                 <input type="text" id="price_of_ticket" name="price_of_ticket" class="form-control"
                                                 placeholder="Enter your price_of_ticket">
                                             </div>
@@ -234,8 +225,7 @@
                                     
                             <div class="col-md-6 mb-2">
                                 <div class="form-group">
-                                    <label for="email" class="form-label">Status<span
-                                            class="text-danger">*</span></label>
+                                    <label for="email" class="form-label">Status</label>
                                     <select class="form-control" name="status" id="status" required="" />
                                     <option value="1">Active</option>
                                     <option value="0">Inactive</option>
@@ -273,9 +263,9 @@
                                      </div>
                                  </div>
                                 </div>
-                                 <div id="addTime">
+                                <div id="addTime">
                         
-                                 </div>
+                                </div>
                         </div>
                     </form>
                 </div>

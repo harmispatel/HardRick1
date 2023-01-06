@@ -32,12 +32,12 @@
                             <i class="fa-solid fa-user-doctor"></i>
                         </div>
                         <div class="card_info_inr">
-                            <h3>14</h3>
+                            <h3>{{ $doctor }}</h3>
                             <h5>Doctors</h5>
                         </div>
                     </div>
                     <div class="dash_card_title">
-                        <a href="#">View all Doctors <i class="fa-solid fa-right-long ms-2"></i></a>
+                        <a href="{{route('Doctor')}}">View all Doctors <i class="fa-solid fa-right-long ms-2"></i></a>
                     </div>
                 </div>
             </div>
@@ -48,12 +48,12 @@
                             <i class="fa-solid fa-user"></i>
                         </div>
                         <div class="card_info_inr">
-                            <h3>82</h3>
+                            <h3>{{ $patient }}</h3>
                             <h5>Patients</h5>
                         </div>
                     </div>
                     <div class="dash_card_title">
-                        <a href="#">View all Patients <i class="fa-solid fa-right-long ms-2"></i></a>
+                        <a href="{{route('Patient')}}">View all Patients <i class="fa-solid fa-right-long ms-2"></i></a>
                     </div>
                 </div>
             </div>
@@ -64,12 +64,12 @@
                             <i class="fa-solid fa-square-virus"></i>
                         </div>
                         <div class="card_info_inr">
-                            <h3>82</h3>
+                            <h3>{{ $chronicDiseases }}</h3>
                             <h5>Chronic Diseases</h5>
                         </div>
                     </div>
                     <div class="dash_card_title">
-                        <a href="#">View all Chronic Diseases <i class="fa-solid fa-right-long ms-2"></i></a>
+                        <a href="{{route('Chronic-disease')}}">View all Chronic Diseases <i class="fa-solid fa-right-long ms-2"></i></a>
                     </div>
                 </div>
             </div>
@@ -80,12 +80,12 @@
                             <i class="fa-solid fa-droplet"></i>
                         </div>
                         <div class="card_info_inr">
-                            <h3>8</h3>
+                            <h3>{{ $bloodType }}</h3>
                             <h5>Blood Type</h5>
                         </div>
                     </div>
                     <div class="dash_card_title">
-                        <a href="#">View all Blood Type <i class="fa-solid fa-right-long ms-2"></i></a>
+                        <a href="{{route('blood-type')}}">View all Blood Type <i class="fa-solid fa-right-long ms-2"></i></a>
                     </div>
                 </div>
             </div>
@@ -96,12 +96,12 @@
                             <i class="fa-solid fa-pills"></i>
                         </div>
                         <div class="card_info_inr">
-                            <h3>14</h3>
+                            <h3>{{ $dragsallergy }}</h3>
                             <h5>Drags allergy</h5>
                         </div>
                     </div>
                     <div class="dash_card_title">
-                        <a href="#">View all Drags allergy <i class="fa-solid fa-right-long ms-2"></i></a>
+                        <a href="{{route('Drags-allergy')}}">View all Drags allergy <i class="fa-solid fa-right-long ms-2"></i></a>
                     </div>
                 </div>
             </div>
@@ -112,12 +112,12 @@
                             <i class="fa-solid fa-utensils"></i>
                         </div>
                         <div class="card_info_inr">
-                            <h3>4</h3>
+                            <h3>{{ $foodallergy }}</h3>
                             <h5>Food allergy</h5>
                         </div>
                     </div>
                     <div class="dash_card_title">
-                        <a href="#">View all Food allergy <i class="fa-solid fa-right-long ms-2"></i></a>
+                        <a href="{{route('Food-allergy')}}">View all Food allergy <i class="fa-solid fa-right-long ms-2"></i></a>
                     </div>
                 </div>
             </div>
@@ -128,12 +128,12 @@
                             <i class="fa-solid fa-hospital-user"></i>
                         </div>
                         <div class="card_info_inr">
-                            <h3>4</h3>
+                            <h3>{{ $specialist }}</h3>
                             <h5>specialist</h5>
                         </div>
                     </div>
                     <div class="dash_card_title">
-                        <a href="#">View all specialist <i class="fa-solid fa-right-long ms-2"></i></a>
+                        <a href="{{route('Specialist')}}">View all specialist <i class="fa-solid fa-right-long ms-2"></i></a>
                     </div>
                 </div>
             </div>
@@ -144,12 +144,12 @@
                             <i class="fa-solid fa-money-bill"></i>
                         </div>
                         <div class="card_info_inr">
-                            <h3>4</h3>
+                            <h3>{{$subcribe}}</h3>
                             <h5>Subcription plan</h5>
                         </div>
                     </div>
                     <div class="dash_card_title">
-                        <a href="#">View all Subcription plan <i class="fa-solid fa-right-long ms-2"></i></a>
+                        <a href="{{route('Subscription')}}">View all Subcription plan <i class="fa-solid fa-right-long ms-2"></i></a>
                     </div>
                 </div>
             </div>
@@ -157,15 +157,15 @@
                 <div class="dash_card">
                     <div class="dash_card_info">
                         <div class="dash_card_icon icon_bg_green">
-                            <i class="fa-solid fa-gear"></i>
+                            <i class="fa fa-calendar"></i>
                         </div>
                         <div class="card_info_inr">
-                            <h3>4</h3>
-                            <h5>Setting</h5>
+                            <h3>{{$appointment}}</h3>
+                            <h5>Appointment</h5>
                         </div>
                     </div>
                     <div class="dash_card_title">
-                        <a href="#">View all Setting <i class="fa-solid fa-right-long ms-2"></i></a>
+                        <a href="{{route('Appointment')}}">View all Appointment <i class="fa-solid fa-right-long ms-2"></i></a>
                     </div>
                 </div>
             </div>

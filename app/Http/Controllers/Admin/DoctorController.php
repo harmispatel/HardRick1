@@ -74,7 +74,7 @@ class DoctorController extends Controller
          }
 
      }
-     public function store(Request $request)
+     public function store(DoctorRequest $request)
      {
          try {
             $id = $request->id;
@@ -162,6 +162,7 @@ class DoctorController extends Controller
             return $this->sendResponse(true, $message, $input);
         } catch (\Throwable $th) {
             //throw $th;
+
             return $this->sendResponse(false, "500, Internal Server Error!");
 
         }
@@ -214,10 +215,10 @@ class DoctorController extends Controller
                     $html .= '</div>';
                     $html .= '</div>';
                     $html .= '</div>';
-                 } 
+                } 
+                $data['html'] = $html;
                }
                
-               $data['html'] = $html;
             $specialists = $data->hasManyDoctorSpecialist;
             foreach($specialists as $value){
                 $specialist_id[] =  $value['specialist_id'];     
@@ -227,8 +228,8 @@ class DoctorController extends Controller
             $default_image = asset("/public/image/default-image.jpeg");
             $path =  asset("public/profileImage/".$data->profile_pic);
             $data['image'] = ($data->profile_pic) ? $path : $default_image;
-            $clinicpath = asset("public/clinic/".$data->hasOneDoctor['picture_clinic']);
-            $data['clinicImage'] = isset($data->hasOneDoctor['picture_clinic']) ? $clinicpath : $default_image;
+            $clinicImage = isset($data->hasOneDoctor['picture_clinic']) ? asset("public/clinic/".$data->hasOneDoctor['picture_clinic']) : $default_image;
+            $data['clinicImage'] = $clinicImage;
             $data['averagehour'] = isset($data->hasOneDoctor['averagehour']) ? $data->hasOneDoctor['averagehour'] : [] ;
             $data['certificates'] = isset($data->hasOneDoctor['certificates']) ? $data->hasOneDoctor['certificates'] : [] ;
             $data['price_of_ticket'] = isset($data->hasOneDoctor['price_of_ticket']) ? $data->hasOneDoctor['price_of_ticket'] : [] ;

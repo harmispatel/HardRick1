@@ -26,7 +26,7 @@ class AskDoctor extends Model
 
     public function specialist()
     {
-        return $this->hasOne(specialist::class, 'id', 'specialistId');
+        return $this->hasOne(Specialist::class, 'id', 'specialistId');
     }
     public function user()
     {

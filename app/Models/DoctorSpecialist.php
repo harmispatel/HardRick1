@@ -22,4 +22,9 @@ class DoctorSpecialist extends Model
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+     public function hasOneDoctor()
+        {
+            return $this->hasOne(User::class, 'id', 'user_id');
+        }
 }

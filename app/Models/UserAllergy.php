@@ -15,9 +15,17 @@ class UserAllergy extends Model
     
     protected $guarded = [];
 
-    // public function getUser()
-    // {
-    //     return $this->hasOne(User::class, 'id', 'user_id');
-    // }
+    public function hasOneChronicDiseases()
+    {
+        return $this->hasOne(Chronicdiseases::class, 'id', 'allergy_id');
+    }
+    public function hasOneDragsAllergy()
+    {
+        return $this->hasOne(Dragsallergy::class, 'id', 'allergy_id');
+    }
+    public function hasOneFoodAllergy()
+    {
+        return $this->hasOne(Foodallergy::class, 'id', 'allergy_id');
+    }
 
 }

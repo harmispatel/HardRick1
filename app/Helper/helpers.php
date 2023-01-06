@@ -29,7 +29,7 @@ use App\Models\Setting;
             return !empty($siteSettings) && $siteSettings->api_key ? $siteSettings->api_key : '';
         }
         elseif($columnName == 'logo'){
-            // echo "<pre>";print_r($siteSettings);exit;
+        
             return !empty($siteSettings) && $siteSettings->logo  ? file_exists_in_folder('site_settings',$siteSettings->logo) : public_url().'/image/logo/logo.png';
         }
     }

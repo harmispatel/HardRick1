@@ -13,7 +13,7 @@ class DoctorRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,30 @@ class DoctorRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
-        ];
+        $this->id=FormRequest::input('id');
+        $rules = [
+        //
+        'name' => 'required',
+        'name_ar' => 'required',
+        'address' => 'required',
+        'price_of_ticket' => 'required',
+        'status_data' => 'required'    
+    ];
+    if (FormRequest::input('id') == '' || '0') {
+       $rules += [
+        'email' => 'required|email|unique:users,email',
+        'phone' => 'required|numeric|min:11|unique:users,phone',
+        'image' => 'required|mimes:jpeg,jpg,png,gif,PNG',
+        'password' => 'required|min:6',
+
+       ];
+    }else{
+        $rules += [
+        'email' => 'required|email|unique:users,email,' . $this->id,
+        'phone' => 'required|numeric|min:11|unique:users,phone,' . $this->id,
+        'image' => 'mimes:jpeg,jpg,png,gif,PNG',
+           ];
+    }
+    return $rules;
     }
 }

@@ -67,28 +67,7 @@
                             <div class="box box-info">
                                 <!-- form start -->                        
                                 <div class="box-body">
-                                    @if( count($errors) > 0)
-                                        @foreach($errors->all() as $error)
-                                            <div class="alert alert-danger" role="alert">
-                                                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                                                <span class="sr-only">Error:</span>
-                                                {{ $error }}
-                                            </div>
-                                        @endforeach
-                                    @endif
-                                    @if(session()->has('message'))
-                                        <div class="alert alert-success" role="alert">
-                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                            {{ session()->get('message') }}
-                                        </div>
-                                    @endif
-                                  
-                                    @if(session()->has('errorMessage'))
-                                        <div class="alert alert-danger" role="alert">
-                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                            {{ session()->get('errorMessage') }}
-                                        </div>
-                                    @endif
+                                   
                                    {{-- {{ dd($siteSettings->toArray()) }} --}}
                                   {{-- {{ dd($siteSettings->logo) }}  --}}
                                     <form method="post" action="{{route('settings.save')}}" enctype="multipart/form-data">
@@ -154,7 +133,7 @@
                                                 <label for="logo" class="control-label text-right">Image</label>
                                                 <input type="file" name="image" class="form-control" >
                     
-                                                <img src="{{asset('public/site_settings/'.$siteSettings->logo)}}" alt="tag">
+                                                <img width="50%" src="{{asset('public/site_settings/'.$siteSettings->logo)}}" alt="tag">
                                             </div>
                                         </div>
                                          
@@ -178,8 +157,6 @@
                                                 <textarea id='privacy_policy' name='privacy_policy' >{{$siteSettings->privacy_policy}}</textarea>
                                             </div>
                                         </div> 
-
-
                                         <div class="box-footer text-center col-md-4">
                                             <input class="btn btn-primary"  id="normal-btn" type="submit" name="submit" value="Save">
                                         </div>
@@ -195,10 +172,7 @@
     {{-- </section> --}}
 </div>
 
-
 @endsection 
-
-
 
 @section('page-js')
 <script type="text/javascript">
@@ -221,5 +195,13 @@
     height: "200px"
     
     });
+    $(document).ready(function() {
+        toastr.options.timeOut = 5000;
+        @if (Session::has('error'))
+            toastr.error('{{ Session::get('error') }}');
+        @elseif(Session::has('message'))
+            toastr.success('{{ Session::get('message') }}');
+        @endif
+    });    
     </script>
 @endsection

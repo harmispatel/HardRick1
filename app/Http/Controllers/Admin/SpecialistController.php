@@ -31,10 +31,10 @@ class SpecialistController extends Controller
              return DataTables::of($Specialist)
              ->addIndexColumn()
              ->addColumn('Image', function ($row){
-                $default_image = asset("/public/image/default-image.jpeg");
+                $default_image = asset("/public/image/not-found4.png");
                 $images = asset("public/specialist/$row->image");
 
-                $specialist_image = ($images) ? $images : $default_image;
+                $specialist_image = ($row->image) ? $images : $default_image;
                 $data = '';
                 $data .= '<img src="'.$specialist_image.'" width="100">';
                 return $data;
@@ -61,22 +61,24 @@ class SpecialistController extends Controller
      public function store(SpecialistRequest $request)
      {
          try {
-             $id =  $request->id;
-             $input = $request->except('_token', 'id');
-            
 
-             if ($request->has('image')) {
+            $id =  $request->id;
+            $data=Specialist::find($id);
+            $input = $request->except('_token', 'id');
+           
+            if($request->has('image')) {
                 $input['image'] = $this->saveImage($request,'specialist');
-             }
+               
+            }
 
-             if ($id == 0) {
+            if ($id == 0) {
                 Specialist::insert($input);
-             } else {
+            } else {
+                $this->old_file_remove($data->image,'specialist');
                 Specialist::find($id)->update($input);
-             }
-             $message = $id ? "Specialist Updated Successfully" : "New Specialist Created Successfully";
-
-             return $this->sendResponse(true, $message, $input);
+            }
+            $message = $id ? "Specialist Updated Successfully" : "New Specialist Created Successfully";
+            return $this->sendResponse(true, $message, $input);
          } catch (\Throwable $th) {
             dd($th);
              return $this->sendResponse(false, "500, Internal Server Error!");
@@ -94,7 +96,7 @@ class SpecialistController extends Controller
                 $default_image = asset("/public/image/default-image.jpeg");
                 $path =  asset("public/specialist/$data->image");
                 $data['image'] = ($data->image) ? $path : $default_image;
-
+               
                 return $this->sendResponse(true, "Hospital has been Retrive SuccessFully", $data);
             } catch (\Throwable $th) {
                 return $this->sendResponse(false, "500, Internal Server Error!");

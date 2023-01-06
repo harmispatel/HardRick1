@@ -34,7 +34,14 @@ trait MediaTrait {
         return  $clinicImage;
     }
 
+    function old_file_remove($fileName,$directory){
+        if($fileName !="" && file_exists(public_path($directory.'/'.$fileName)))
+        {
+            return unlink(public_path($directory.'/'.$fileName));
+        }
+    }
 
-    
+
+     
 
 }

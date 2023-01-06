@@ -25,10 +25,12 @@ class HospitalRequest extends FormRequest
      */
     public function rules()
     {
+        $this->id=FormRequest::input('id');
         $rules = [
             'name' => 'required',
 
         ];
+
         if(FormRequest::input('id') == '0')
         {
             $rules += [

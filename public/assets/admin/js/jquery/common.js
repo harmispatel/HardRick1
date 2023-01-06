@@ -1,5 +1,4 @@
 // tostr message code
-
 const { Alert } = require("bootstrap");
 const { defaultsDeep } = require("lodash");
 
@@ -69,61 +68,85 @@ const { defaultsDeep } = require("lodash");
     }
 
     function openaddmodel(name, id, url, formName, labelName, modalName) {
+
         $.ajaxSetup({   
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-        if (id == 0) {
-            $(formName).trigger('reset');
-            $('#name').removeClass('is-invalid');
-            $('#name_ar').removeClass('is-invalid');  
-            $('#phone').removeClass('is-invalid');
-            $('#price').removeClass('is-invalid');
-            $('#days').removeClass('is-invalid');
-            $('#image').removeClass('is-invalid');
-            $('#address').removeClass('is-invalid');
-            $('#birth_date').removeClass('is-invalid');
-            $('#email').removeClass('is-invalid');
-           $('#password').removeClass('is-invalid');
-           $('#dragsAllergy').removeClass('is-invalid');
 
-            $('#specialists').val('').change();
-            $('#Foodallergy').val('').change();
-            $('#dragsAllergy').val('').change();
-            $('#Chronicdiseases').val('').change();
-            $('#pic').attr('src','');
-            $('#pic').show();
-            $('#pic1').attr('src','');
-            $('#pic1').show();
-            toastr.clear();
+        $(formName).trigger('reset');
+        $('#name').removeClass('is-invalid');
+        $('#name_ar').removeClass('is-invalid'); 
+        $('#phone').removeClass('is-invalid');
+        $('#price').removeClass('is-invalid');
+        $('#days').removeClass('is-invalid');
+        $('#image').removeClass('is-invalid');
+        $('#address').removeClass('is-invalid');
+        $('#Bloodtype').removeClass('is-invalid');
+        $('#birth_date').removeClass('is-invalid');
+        $('#email').removeClass('is-invalid');
+        $('#password').removeClass('is-invalid');
+        $('#dragsAllergy').removeClass('is-invalid');
+        $('#specialists').val('').change();
+
+        $('#Foodallergy').val('').change();
+        $('#dragsAllergy').val('').change();
+        $('#Chronicdiseases').val('').change();
+        $('#pic').attr('src','');
+        $('#pic').show();
+        $('#pic1').attr('src','');
+        $('#pic1').show();
+        if (id == 0) {
+           //  $(formName).trigger('reset');
+           //  $('#name','#name_ar').removeClass('is-invalid');
+           //  $('#status_data').removeClass('is-invalid');  
+           //  $('#phone').removeClass('is-invalid');
+           //  $('#price').removeClass('is-invalid');
+           //  $('#days').removeClass('is-invalid');
+           //  $('#image').removeClass('is-invalid');
+           //  $('#address').removeClass('is-invalid');
+           //  $('#birth_date').removeClass('is-invalid');
+           //  $('#email').removeClass('is-invalid');
+           // $('#password').removeClass('is-invalid');
+           // $('#dragsAllergy').removeClass('is-invalid');
+
+           //  $('#specialists').val('').change();
+           //  $('#Foodallergy').val('').change();
+           //  $('#dragsAllergy').val('').change();
+           //  $('#Chronicdiseases').val('').change();
+           //  $('#pic').attr('src','');
+           //  $('#pic').show();
+           //  $('#pic1').attr('src','');
+           //  $('#pic1').show();
+           //  toastr.clear();
             $(labelName).text(name); 
             $(modalName).modal('show');
 
         } else {
-            
-            $(formName).trigger('reset');
-            $('#name').removeClass('is-invalid');
-            $('#name_ar').removeClass('is-invalid'); 
-            $('#phone').removeClass('is-invalid');
-            $('#price').removeClass('is-invalid');
-            $('#days').removeClass('is-invalid');
-            $('#image').removeClass('is-invalid');
-            $('#address').removeClass('is-invalid');
-            $('#birth_date').removeClass('is-invalid');
-            $('#email').removeClass('is-invalid');
-            $('#password').removeClass('is-invalid');
-            $('#dragsAllergy').removeClass('is-invalid');
-            $('#specialists').val('').change();
+          
+            // $(formName).trigger('reset');
+            // $('#name').removeClass('is-invalid');
+            // $('#name_ar').removeClass('is-invalid'); 
+            // $('#phone').removeClass('is-invalid');
+            // $('#price').removeClass('is-invalid');
+            // $('#days').removeClass('is-invalid');
+            // $('#image').removeClass('is-invalid');
+            // $('#address').removeClass('is-invalid');
+            // $('#birth_date').removeClass('is-invalid');
+            // $('#email').removeClass('is-invalid');
+            // $('#password').removeClass('is-invalid');
+            // $('#dragsAllergy').removeClass('is-invalid');
+            // $('#specialists').val('').change();
 
-            $('#Foodallergy').val('').change();
-            $('#dragsAllergy').val('').change();
-            $('#Chronicdiseases').val('').change();
-            $('#pic').attr('src','');
-            $('#pic').show();
-            $('#pic1').attr('src','');
-            $('#pic1').show();
-            toastr.clear();
+            // $('#Foodallergy').val('').change();
+            // $('#dragsAllergy').val('').change();
+            // $('#Chronicdiseases').val('').change();
+            // $('#pic').attr('src','');
+            // $('#pic').show();
+            // $('#pic1').attr('src','');
+            // $('#pic1').show();
+            // toastr.clear();
             $.ajax({
                 type: "POST",
                 url:url,
@@ -135,13 +158,15 @@ const { defaultsDeep } = require("lodash");
                     if (response.success)
                     {
                         const datas = response.data;
-                        console.log(datas);
                         $('#name').val(datas.name);
+                        $('#user_name').val(datas.name);
+                        $('#user_email').val(datas.email);
                         $('#name_ar').val(datas.name_ar);
                         $('#phone').val(datas.phone);
                         $('#price').val(datas.price);
                         $('#days').val(datas.days);
                         $('#id').val(datas.id);
+                        $('#user_id').val(datas.id);
                         $('#email').val(datas.email);
                         $('#address').val(datas.address);
                         $('#birth_date').val(datas.birth_date);
@@ -159,7 +184,7 @@ const { defaultsDeep } = require("lodash");
                         $('#dateto').val(datas.to_date);
                         $('#status').val(datas.status);
                         $('#status_data').val(datas.status_data);
-                        $('#addTime').html();
+                        $('#addTime').html('');
                         $('#addTime').html(datas.html);
                         $('#workHours').remove();
                         $("#specialists").select2({
@@ -183,6 +208,7 @@ const { defaultsDeep } = require("lodash");
                           $('#pic1').show();
                         $('#pic').html('');
                         $('#pic').attr('src',datas.image);
+                        $('#user_pic').attr('src',datas.image);
                         $('#pic').show();
 
                     } else {
@@ -324,6 +350,11 @@ function loadData(type,tableIdName,url)
         }
         myFormData = new FormData(document.getElementById(formName));
         $('#name').removeClass('is-invalid');
+        $('#user_name').removeClass('is-invalid');
+        $('#user_email').removeClass('is-invalid');
+        $('#user_image').removeClass('is-invalid');
+        $('#price_of_ticket').removeClass('is-invalid');
+        $('#Bloodtype').removeClass('is-invalid');
         $('#name_ar').removeClass('is-invalid');
         $('#phone').removeClass('is-invalid');
         $('#price').removeClass('is-invalid');
@@ -332,6 +363,7 @@ function loadData(type,tableIdName,url)
         $('#birth_date').removeClass('is-invalid');
         $('#email').removeClass('is-invalid');
         $('#password').removeClass('is-invalid');
+        $('#Bloodtype').removeClass('is-invalid');
         $('#dragsAllergy').removeClass('is-invalid');
 
 
@@ -354,10 +386,14 @@ function loadData(type,tableIdName,url)
             
                 if (response.success)
                 {
+                    console.log(response.data);
                     $(formName).trigger('reset');
                     $(modelname).modal('hide');
                     toastr.success(response.message);
                     $(tableIdName).DataTable().ajax.reload();
+                    if(response.data.type=='reload'){
+                        location.reload();
+                    }
                   
                 }
                 else
@@ -371,12 +407,14 @@ function loadData(type,tableIdName,url)
                 var validationError = (response?.responseJSON?.errors) ? response.responseJSON.errors : '';
                 console.log(validationError);
                 if (validationError != '') {
-                   
+                    
                     var nameError = (validationError.name) ? validationError.name : '';
+                    var bloodTypeError = (validationError.blood_type_id) ? validationError.blood_type_id : '';
                     var name_arError = (validationError.name_ar) ? validationError.name_ar : '';
                     var phoneError = (validationError.phone) ? validationError.phone : '';
                     var priceError = (validationError.price) ? validationError.price : '';
-                    var daysError = (validationError.days) ? validationError.days : '';
+                    var priceOfTicketError = (validationError.price_of_ticket) ? validationError.price_of_ticket : '';
+                    var daysError = (validationError.status_data) ? validationError.status_data : '';
                     var imageError = (validationError.image) ? validationError.image : '';
                     var addressError = (validationError.address) ? validationError.address : '';
                     var birth_dateError = (validationError.birth_date) ? validationError.birth_date : '';
@@ -389,15 +427,23 @@ function loadData(type,tableIdName,url)
 
                     // Name Error
                     if (nameError != '') {
-                        $('#name').addClass('is-invalid');
                         toastr.error(nameError);
+                        $('#name').addClass('is-invalid');
+                         $('#user_name').addClass('is-invalid');
                     }
-
                     // Name Arabic Error
                     if (name_arError != '') {
                         toastr.error(name_arError);
                         $('#name_ar').addClass('is-invalid');
                     }
+
+                    // blood type 
+
+                    if (bloodTypeError != '') {
+                        toastr.error(bloodTypeError);
+                        $('#Bloodtype').addClass('is-invalid');
+                    }
+                         
 
                      // phone Error
                      if (phoneError != '') {
@@ -410,16 +456,22 @@ function loadData(type,tableIdName,url)
                         toastr.error(priceError);
                         $('#price').addClass('is-invalid');
                     }
+                    // price of ticket Error
+                      if (priceOfTicketError != '') {
+                        toastr.error(priceOfTicketError);
+                        $('#price_of_ticket').addClass('is-invalid');
+                    }  
                     // days Error
                     if (daysError != '') {
                         toastr.error(daysError);
-                        $('#days').addClass('is-invalid');
+                        $('#status_data').addClass('is-invalid');
                     }
 
                     // Image Error
                     if (imageError != '') {
                         toastr.error(imageError);
                         $('#image').addClass('is-invalid');
+                        $('#user_image').addClass('is-invalid');
                     }
                       // address Error
                       if (addressError != '') {
@@ -435,6 +487,7 @@ function loadData(type,tableIdName,url)
                       if (emailError != '') {
                         toastr.error(emailError);
                         $('#email').addClass('is-invalid');
+                        $('#user_email').addClass('is-invalid');
                     }
                       // password Error
                       if (passwordError != '') {

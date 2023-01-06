@@ -39,6 +39,20 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+     public function hasManyFoodallergy()
+    {
+        return $this->hasMany('App\Models\UserAllergy', 'user_id', 'id')->where('allergy_type','1');
+    }
+
+    public function hasManyDragsallergy()
+    {
+        return $this->hasMany('App\Models\UserAllergy', 'user_id', 'id')->where('allergy_type','2');
+    }
+
+    public function hasManyChronicDiseases()
+    {
+        return $this->hasMany('App\Models\UserAllergy', 'user_id', 'id')->where('allergy_type','3');
+    }
     public function hasManyallergy()
     {
         return $this->hasMany(UserAllergy::class, 'user_id', 'id');
@@ -58,6 +72,10 @@ class User extends Authenticatable
     public function hasManyDoctorTime()
     {
         return $this->hasMany(DoctorTime::class, 'user_id', 'id');
+    }
+     public function hasManyDoctorClinicImages()
+    {
+        return $this->hasMany('App\Models\DoctorClinicImages', 'user_id', 'id');
     }
 
     

@@ -84,6 +84,136 @@ body{
     font-weight: 500;
     margin: 0;
 }
+.editp{
+    width:40px !important;
+    height:40px !important;
+}
+.pac-container {z-index: 99999999999 !important;}
 
 
 
+/* HEADER CUSTOM CSS*/
+
+.main-header .logo img{
+    width:40px !important;
+    height:40px !important;
+    position: relative;
+    z-index: 9999;
+}
+.sidebar-mini.sidebar-collapse .main-header .navbar {
+    margin-left: 65px !important;
+}
+.sidebar-mini.sidebar-collapse .main-sidebar.testde,.sidebar-mini.sidebar-collapse .main-header .logo{
+    width:65px !important;
+}
+.swal2-popup {
+    font-size: 1.5rem !important;
+}
+
+.auth_main{
+    background-image: linear-gradient(to top, #88d3ce 0%, #6e45e2 100%);
+    height:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.auth_inr{
+    background-color:#fff;
+    padding:30px;
+    border-radius:20px;
+}
+.auth_inr .theme-logo{
+    width: 100px;
+}
+.form-login{
+    margin: 0;
+}
+.btn-gradient-dark{
+    color: #fff !important;
+    background-image: linear-gradient(to right, #243949 0%, #517fa4 100%);
+    background-color: #517fa4;
+    border-radius:20px !important;
+}
+
+/* dashboard new */
+
+.dash_card{
+    background-color:#fff;
+    padding:20px;
+    border-radius:10px;
+    box-shadow: 0px 0 30px rgb(1 41 112 / 10%);
+    margin-bottom:15px;
+}
+
+.dash_card_info{
+    margin-bottom:20px;
+}
+
+.dash_card_title a{
+    font-size:18px;
+    font-weight:600;
+    color:#012970;
+    margin:0;
+    transition: all 0.5s ease-in-out;
+    display:flex;
+    align-items: center;
+}
+
+.dash_card_info{
+    display:flex;
+    align-items: center;
+}
+
+.dash_card_icon{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon_bg_green{
+    background-color: #acf5d4;
+    color: #00a65a;
+}
+
+.icon_bg_aqua{
+    background-color:#cdf0f9;
+    color:#00c0ef;
+}
+
+.icon_bg_yellow{
+    background-color:#f3dfc0;
+    color:#f39c12;
+}
+
+.icon_bg_red{
+    background-color:#f5bbb3;
+    color:#dd4b39 ;
+}
+
+.dash_card_icon i{
+    font-size:30px;
+}
+
+.card_info_inr{
+    margin-left:15px;
+}
+.card_info_inr h3{
+    font-size: 28px;
+    line-height:28px;
+    color: #012970;
+    font-weight: 700;
+    margin: 0;
+}
+
+.card_info_inr h5{
+    font-size: 18;
+    color: #6c757d;
+    font-weight: 500;
+    margin: 0;
+}
+.error{
+    color:red;
+}

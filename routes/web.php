@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\Admin\{DashboardController, ChronicDiseasesController, BloodTypeController, DragsAllergyController, FoodAllergyController, HospitalController, SubscriptionController, SpecialistController, AskDoctorController, AppointmentController,PatientController,DoctorController, SettingController};
-use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Admin\{DashboardController, ChronicDiseasesController, BloodTypeController, DragsAllergyController, FoodAllergyController, HospitalController, SubscriptionController, SpecialistController, AskDoctorController, AppointmentController,PatientController,DoctorController, SettingController,HomeController};
+use App\Http\Controllers\Auth\{LoginController,ForgotPasswordController};
 use Illuminate\Support\Facades\{Auth, Route};
 
 /*
@@ -25,6 +25,31 @@ Route::get('/', function ()
 // ADMIN ROUTES
 Auth::routes();
 
+Route::get('config-clear', function () {
+    Artisan::call('cache:clear');
+    Artisan::call('route:clear');
+    Artisan::call('config:clear');
+    dd("Cache is cleared");
+});
+Route::get('/term_condition', [HomeController::class,'term_condition'])->name('term_condition');
+Route::get('/about_us', [HomeController::class,'about_us'])->name('about_us');
+Route::get('/privacy_policy',[HomeController::class,'privacy_policy'])->name('privacy_policy');
+Route::get('/contact_us',[HomeController::class,'contact_us'])->name('contact_us');
+Route::post('/contact_us',[HomeController::class,'contactussave'])->name('contact_us.save');
+
+
+
+Route::get('locale/{locale}', function ($locale){
+    Session::put('locale', $locale);
+    return redirect()->back();
+});
+
+// forgot password 
+
+Route::post('/forget-password',[ForgotPasswordController::class,'submitForgetPassword'])->name('forget.password.post');
+Route::get('/reset-password/{token}',[ForgotPasswordController::class,'showResetPassword'])->name('reset.password.get');
+Route::post('/reset-password',[ForgotPasswordController::class,'submitResetPassword'])->name('reset.password.post');
+
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::group(['prefix' => 'admin'], function()
 {
@@ -37,9 +62,13 @@ Route::group(['prefix' => 'admin'], function()
 
     Route::group(['middleware' => 'is_admin'], function ()
     {
-        // Dashboard
-        Route::get('dashboard',[DashboardController::class,'index'])->name('dashboard');
+          // Dashboard
+          Route::get('dashboard',[DashboardController::class,'index'])->name('dashboard');
 
+          //userProfile
+          Route::post('/profile',[DashboardController::class,'profile'])->name('profile');
+          Route::post('/updateProfile',[DashboardController::class,'updateProfile'])->name('updateProfile');
+          Route::get('/logout',[DashboardController::class,'adminLogout'])->name('adminlogout');
           // Patient
           Route::get('Patient',[PatientController::class,'index'])->name('Patient');
           Route::get('/Patient-data', [PatientController::class,'loadPatientData'])->name('loadPatient-data');
@@ -115,17 +144,9 @@ Route::group(['prefix' => 'admin'], function()
         Route::get('/Appointment-data', [AppointmentController::class,'loadAppointmentData'])->name('loadAppointment-data');
 
         // Setting
-	Route::get('Setting', [SettingController::class,'form'])->name('Setting');
-	Route::post('/Setting-store', [SettingController::class,'store'])->name('settings.save');
+	     Route::get('Setting', [SettingController::class,'form'])->name('Setting');
+	     Route::post('/Setting-store', [SettingController::class,'store'])->name('settings.save');
 
-
-        
-
-        
-
-
-        // Logout Admin
-        Route::get('/logout',[DashboardController::class,'adminLogout'])->name('adminlogout');
-
+        // Logout Admin  
     });
 });
